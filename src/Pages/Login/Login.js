@@ -33,6 +33,10 @@ const Login = () => {
                                 </div>
                             </form>
                             <p className='text-center'>Don't have an account? <Link className='text-primary' to="/register">Create an account</Link> </p>
+                            <div>
+                                <div className="divider">OR</div>
+                                <button className='btn btn-outline btn-primary w-full'>Login with Google</button>
+                            </div>
                         </div>
                     </div>
                 </div>

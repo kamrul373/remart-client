@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "./ErrorElement.css";
 const ErrorElement = () => {
     return (
         <div>
