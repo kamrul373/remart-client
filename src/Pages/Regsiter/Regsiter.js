@@ -47,8 +47,25 @@ const Regsiter = () => {
                             // updating profile 
                             updateUser(name, imageURL);
                             toast.success("Registered Successfully")
-                            const user = result.user
-
+                            const buyer = {
+                                email: result.user.email,
+                                role: accountType
+                            }
+                            console.log(buyer);
+                            // saving user on database
+                            fetch(`${process.env.REACT_APP_SERVER_URL}/buyers`, {
+                                method: "PUT",
+                                headers: {
+                                    "content-type": "application/json"
+                                },
+                                body: JSON.stringify(buyer)
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log(data);
+                                    // token saving on localstorage
+                                    localStorage.setItem("remart-token", data.token)
+                                })
                         }
                     })
                     .catch(error => {

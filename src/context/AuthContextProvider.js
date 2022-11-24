@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.init';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 export const AuthContext = createContext()
 const auth = getAuth(app);
@@ -33,7 +33,11 @@ const AuthContextProvider = ({ children }) => {
     const loginWithGoogle = () => {
         return signInWithPopup(auth, googleProvider);
     }
-
+    //logout
+    const logout = () => {
+        localStorage.removeItem("remart-token");
+        return signOut(auth)
+    }
     // on auth state changed
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -53,6 +57,7 @@ const AuthContextProvider = ({ children }) => {
         updateUser,
         login,
         loginWithGoogle,
+        logout
     }
     return (
         <div>

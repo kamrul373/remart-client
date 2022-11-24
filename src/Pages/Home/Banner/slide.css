@@ -1,0 +1,21 @@
+@media all and (max-width:576px) {
+    .home-slide {
+        background-size: 100% 100%;
+        min-height: 300px;
+        text-align: center;
+        color: #FFF;
+        z-index: 999;
+    }
+
+    .home-slide::before {
+        content: "";
+        position: absolute;
+        background: #4f6985;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.5;
+    }
+}
