@@ -1,0 +1,20 @@
+[
+    "excellent, good, fair",
+    {
+        "productName": "",
+        "category": "",
+        "category_id": "",
+        "picture": "",
+        "description": "",
+        "location": "",
+        "resalePrice": 1,
+        "originalPrice": 1,
+        "UsedDuration": "",
+        "YearOfPurchase": 1,
+        "productCondition": "",
+        "postedTime": "",
+        "sellerName": "",
+        "sellerEmail": "",
+        "sellerPhoneNumber": 1
+    }
+]

@@ -49,7 +49,8 @@ const Regsiter = () => {
                             toast.success("Registered Successfully")
                             const user = {
                                 email: result.user.email,
-                                role: accountType
+                                role: accountType,
+                                verified: false
                             }
 
                             // saving user on database
