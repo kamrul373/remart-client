@@ -4,7 +4,6 @@ import { pageTitle } from '../../utility/pageTitle';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContextProvider';
 import { toast } from 'react-hot-toast';
-import SmallLoading from '../../Components/SmallLoding/SmallLoading';
 const Regsiter = () => {
     // error state 
     const [error, setError] = useState(null);
@@ -15,6 +14,7 @@ const Regsiter = () => {
     // auth context 
     const { createUser, updateUser } = useContext(AuthContext);
 
+    // regiser form event handler
     const handleRegister = (e) => {
         e.preventDefault();
         setCustomLoading(true);
@@ -43,55 +43,54 @@ const Regsiter = () => {
                     .then(response => {
                         if (response.data.success) {
                             const imageURL = response.data.data.url;
-                            console.log(imageURL)
+                            //console.log(imageURL)
                             // updating profile 
                             updateUser(name, imageURL);
                             toast.success("Registered Successfully")
-                            const buyer = {
+                            const user = {
                                 email: result.user.email,
                                 role: accountType
                             }
-                            console.log(buyer);
+
                             // saving user on database
-                            fetch(`${process.env.REACT_APP_SERVER_URL}/buyers`, {
+                            fetch(`${process.env.REACT_APP_SERVER_URL}/users`, {
                                 method: "PUT",
                                 headers: {
                                     "content-type": "application/json"
                                 },
-                                body: JSON.stringify(buyer)
+                                body: JSON.stringify(user)
                             })
                                 .then(response => response.json())
                                 .then(data => {
-                                    console.log(data);
+                                    //console.log(data);
                                     // token saving on localstorage
-                                    localStorage.setItem("remart-token", data.token)
+                                    localStorage.setItem("remart-token", data.token);
+                                    form.reset();
                                 })
                         }
                     })
                     .catch(error => {
                         setCustomLoading(false)
-                        console.log(error)
+                        //console.log(error)
                     });
 
                 setCustomLoading(false)
-            }).catch(error => {
+            }).catch(err => {
                 setCustomLoading(false)
-                setError(error.message)
+                setError(err.message);
+                // custom error message
+                if (error) {
+                    if (error.includes("auth/email-already-in-use")) {
+                        toast.error("User already exist")
+                    }
+                    if (error.includes("auth/weak-password")) {
+                        toast.error("Password should contain 6 charecters")
+                    }
+                }
             })
-
-
-
         //console.log(name, email, password, image, accountType)
     }
-    // custom error message
-    if (error) {
-        if (error.includes("auth/email-already-in-use")) {
-            toast.error("User already exist")
-        }
-        if (error.includes("auth/weak-password")) {
-            toast.error("Password should contain 6 charecters")
-        }
-    }
+
     return (
         <div>
             <div className="hero lg:min-h-screen bg-base-200">
@@ -136,7 +135,7 @@ const Regsiter = () => {
 
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button type='submit' className="btn btn-primary"> {customLoading ? <span className="btn btn-circle bg-primary loading"></span> : "Register"} </button>
+                                    <button type='submit' className="btn btn-primary"> {customLoading ? <span className="btn btn-circle bg-transparent loading"></span> : "Register"} </button>
                                 </div>
 
                             </form>
