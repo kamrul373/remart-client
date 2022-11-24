@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { pageTitle } from '../../utility/pageTitle';
 
 const Login = () => {
+    // page title
+    pageTitle("Login");
     return (
         <div>
             <div className="hero lg:min-h-screen bg-base-200">

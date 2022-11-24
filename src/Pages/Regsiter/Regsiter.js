@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { pageTitle } from '../../utility/pageTitle';
 
 const Regsiter = () => {
+    // page title
+    pageTitle("Register");
     return (
         <div>
             <div className="hero lg:min-h-screen bg-base-200">
@@ -21,9 +24,23 @@ const Regsiter = () => {
                                         <span className="label-text">Password</span>
                                     </label>
                                     <input type="text" placeholder="password" className="input input-bordered" id='password' name='password' required />
-                                    <label className="label">
-                                        <button href="#" className="label-text-alt link link-hover">Forgot password?</button>
+                                </div>
+                                <div className="form-control">
+                                    <label className="label" htmlFor='password'>
+                                        <span className="label-text">Profile picutre</span>
                                     </label>
+                                    <input type="file" className="file-input file-input-ghost input-bordered w-full " name="image" accept="image/*" />
+                                </div>
+
+                                <div className="form-control w-full ">
+                                    <label className="label">
+                                        <span className="label-text">Account Type</span>
+                                    </label>
+                                    <select className="select select-bordered" name='account-type'>
+                                        <option value="buyer">Buyer</option>
+                                        <option value="seller">Seller</option>
+                                    </select>
+
                                 </div>
                                 <div className="form-control mt-6">
                                     <button className="btn btn-primary">Register</button>
