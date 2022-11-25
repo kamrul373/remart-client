@@ -119,10 +119,10 @@ const Regsiter = () => {
                                     <input type="password" placeholder="password" className="input input-bordered" id='password' name='password' required />
                                 </div>
                                 <div className="form-control">
-                                    <label className="label" htmlFor='password'>
+                                    <label className="label" htmlFor='image'>
                                         <span className="label-text">Profile picutre</span>
                                     </label>
-                                    <input type="file" className="file-input file-input-ghost input-bordered w-full " name="image" accept="image/*" required />
+                                    <input type="file" className="file-input file-input-ghost input-bordered w-full " name="image" accept="image/*" id="image" required />
                                 </div>
 
                                 <div className="form-control w-full ">
