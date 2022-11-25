@@ -9,7 +9,6 @@ const AddProduct = () => {
         queryFn: async () => {
             const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/category`);
             const result = await res.json();
-            console.log("inside", result)
             return result;
         }
     })
@@ -32,11 +31,10 @@ const AddProduct = () => {
                         <span className="label-text">Product Category</span>
                     </label>
                     <select name="category" className="select select-primary w-full" id="category" required>
-                        <option disabled selected value="">Category</option>
                         {
                             categories.map(category => <option
                                 key={category._id}
-                                defaultValue={category.category}
+                                value={category.category}
                             >
                                 {category.category}
                             </option>)

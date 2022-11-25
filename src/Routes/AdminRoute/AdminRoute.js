@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 
-import { AuthContext } from '../../../../../71-doctors-portal/doctors-portal-client/src/context/AuthContextProvider/AuthContextProvider';
-import useIsAdmin from '../../../../../71-doctors-portal/doctors-portal-client/src/Hooks/useIsAdmin';
+import { AuthContext } from "../../context/AuthContextProvider"
+
 import Loading from '../../Components/Loading/Loading';
+import { useIsAdmin } from '../../utility/useIsAdmin/useIsAdmin';
 
 const AdminRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
-    const [adminLoading, isAdmin] = useIsAdmin(user?.email)
+    const [adminLoading, isAdmin] = useIsAdmin(user?.email);
 
     if (loading || adminLoading) {
         return <Loading></Loading>
