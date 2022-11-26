@@ -7,6 +7,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyProducts from "../../Pages/MyProducts/MyProducts";
 import Orders from "../../Pages/Orders/Orders";
+import Payment from "../../Pages/Payment/Payment";
 import Products from "../../Pages/Products/Products";
 import Regsiter from "../../Pages/Regsiter/Regsiter";
 import AdminRoute from "../AdminRoute/AdminRoute";
@@ -55,6 +56,11 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/orders",
                 element: <Orders></Orders>
+            },
+            {
+                path: "/dashboard/payment/:id",
+                loader: async ({ params }) => fetch(`${process.env.REACT_APP_SERVER_URL}/orders/${params.id}`),
+                element: <Payment></Payment>
             }
         ]
     }

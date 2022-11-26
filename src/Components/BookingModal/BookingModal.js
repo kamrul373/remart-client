@@ -9,7 +9,7 @@ const BookingModal = ({ bookingData, setBookingData }) => {
         const meetingLocation = form.meetingLocation.value;
         const customerPhone = form.phone.value;
         const finalBookingData = {
-            customerName, customerEmail, customerPhone, bookedProductId, bookedProductName, productPrice, meetingLocation, sellerEmailAddress, pictureURL
+            customerName, customerEmail, customerPhone, bookedProductId, bookedProductName, productPrice, meetingLocation, sellerEmailAddress, pictureURL, status: false
         }
         fetch(`${process.env.REACT_APP_SERVER_URL}/booking`, {
             method: "POST",
