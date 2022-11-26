@@ -2,14 +2,14 @@ import React from 'react';
 import { toast } from 'react-hot-toast';
 
 const BookingModal = ({ bookingData, setBookingData }) => {
-    const { customerName, customerEmail, bookedProductName, bookedProductId, sellerEmailAddress, productPrice } = bookingData;
+    const { customerName, customerEmail, bookedProductName, bookedProductId, sellerEmailAddress, productPrice, pictureURL } = bookingData;
     const handleBookingProcess = (e) => {
         e.preventDefault();
         const form = e.target;
         const meetingLocation = form.meetingLocation.value;
         const customerPhone = form.phone.value;
         const finalBookingData = {
-            customerName, customerEmail, customerPhone, bookedProductId, productPrice, meetingLocation, sellerEmailAddress
+            customerName, customerEmail, customerPhone, bookedProductId, bookedProductName, productPrice, meetingLocation, sellerEmailAddress, pictureURL
         }
         fetch(`${process.env.REACT_APP_SERVER_URL}/booking`, {
             method: "POST",

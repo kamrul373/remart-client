@@ -21,6 +21,7 @@ const ProductCard = ({ product, setBookingData }) => {
         bookedProductId: _id,
         sellerEmailAddress: sellerEmail,
         productPrice: resalePrice,
+        pictureURL
     }
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl">
