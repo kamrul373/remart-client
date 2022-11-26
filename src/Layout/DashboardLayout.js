@@ -31,6 +31,7 @@ const DashboardLayout = () => {
                         </div>
                         {/* <!-- Sidebar content here --> */}
                         <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/add-product">Add Product</Link></li>
+                        <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/myproducts">My Products</Link></li>
 
                     </ul>
 

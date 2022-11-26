@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { pageTitle } from '../../utility/pageTitle';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContextProvider';
@@ -12,7 +12,8 @@ const Regsiter = () => {
     // page title
     pageTitle("Register");
     // auth context 
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, loading } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     // regiser form event handler
     const handleRegister = (e) => {
@@ -66,6 +67,7 @@ const Regsiter = () => {
                                     //console.log(data);
                                     // token saving on localstorage
                                     localStorage.setItem("remart-token", data.token);
+                                    navigate("/");
                                     form.reset();
                                 })
                         }

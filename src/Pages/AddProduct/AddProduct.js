@@ -26,7 +26,7 @@ const AddProduct = () => {
         const productName = form.productName.value;
         const category = form.category.value;
         const categoryId = form.category.selectedOptions[0].getAttribute('data-catid');
-        const description = form.description.value.trim().split(".");
+        const description = form.description.value.split(".");
         const resalePrice = parseInt(form.resalePrice.value);
         const originalPrice = form.originalPrice.value;
         const usedDuration = form.usedDuration.value;
@@ -37,7 +37,7 @@ const AddProduct = () => {
         const location = form.location.value;
         const sellerName = user?.displayName;
         const sellerEmail = user?.email;
-
+        const status = "unsold"
         // processing image by axios
         const image = form.image.files[0];
         const formData = new FormData();
@@ -66,7 +66,8 @@ const AddProduct = () => {
                     sellerPhoneNumber,
                     location,
                     sellerName,
-                    sellerEmail
+                    sellerEmail,
+                    status
                 }
                 fetch(`${process.env.REACT_APP_SERVER_URL}/product`, {
                     method: "POST",
@@ -133,13 +134,13 @@ const AddProduct = () => {
                     <label className="label" htmlFor='resalePrice'>
                         <span className="label-text">Reslae Price</span>
                     </label>
-                    <input name='resalePrice' type="number" placeholder="Resale Price" className="input input-bordered input-primary w-full " id="resalePrice" required />
+                    <input name='resalePrice' type="text" placeholder="Resale Price" className="input input-bordered input-primary w-full " id="resalePrice" required />
                 </div>
                 <div className="form-control">
                     <label className="label" htmlFor='originalPrice'>
                         <span className="label-text">Original Price</span>
                     </label>
-                    <input name='originalPrice' type="number" placeholder="Original Price" className="input input-bordered input-primary w-full " id="originalPrice" required />
+                    <input name='originalPrice' type="text" placeholder="Original Price" className="input input-bordered input-primary w-full " id="originalPrice" required />
                 </div>
 
                 <div className="form-control">
@@ -153,7 +154,7 @@ const AddProduct = () => {
                     <label className="label" htmlFor='yearOfPurchase'>
                         <span className="label-text">Year Of Purchase</span>
                     </label>
-                    <input name='yearOfPurchase' type="number" placeholder="Original Price" className="input input-bordered input-primary w-full " id="yearOfPurchase" required />
+                    <input name='yearOfPurchase' type="text" placeholder="Original Price" className="input input-bordered input-primary w-full " id="yearOfPurchase" required />
                 </div>
                 <div className="form-control">
                     <label className="label" htmlFor='productCondition'>
@@ -175,7 +176,7 @@ const AddProduct = () => {
                     <label className="label" htmlFor='sellerPhoneNumber'>
                         <span className="label-text">Phone Number</span>
                     </label>
-                    <input name='sellerPhoneNumber' type="number" placeholder="Seller Phone Number" className="input input-bordered input-primary w-full " id="sellerPhoneNumber" required />
+                    <input name='sellerPhoneNumber' type="text" placeholder="Seller Phone Number" className="input input-bordered input-primary w-full " id="sellerPhoneNumber" required />
                 </div>
 
                 <div className="mt-4">

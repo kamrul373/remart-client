@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContextProvider';
 import { pageTitle } from '../../utility/pageTitle';
 
@@ -14,6 +14,10 @@ const Login = () => {
     const { login, loginWithGoogle, resetPassword } = useContext(AuthContext)
     // form process loading state
     const [customLoading, setCustomLoading] = useState(false);
+    // previous location
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate()
     // login form event handler
     const handleLogin = (e) => {
         e.preventDefault();
@@ -37,6 +41,7 @@ const Login = () => {
                         form.reset();
                         toast.success("Successfully logged in");
                         setCustomLoading(false)
+                        navigate(from, { replace: true })
                     })
 
             }).catch(err => {
@@ -78,7 +83,8 @@ const Login = () => {
                     //console.log(data);
                     // token saving on localstorage
                     localStorage.setItem("remart-token", data.token);
-
+                    toast.success("Successfully Logged in")
+                    navigate(from, { replace: true })
                 })
         })
     }

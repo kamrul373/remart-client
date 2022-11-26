@@ -5,6 +5,7 @@ import AddProduct from "../../Pages/AddProduct/AddProduct";
 import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import MyProducts from "../../Pages/MyProducts/MyProducts";
 import Regsiter from "../../Pages/Regsiter/Regsiter";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/add-product",
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: "/dashboard/myproducts",
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             }
         ]
     }

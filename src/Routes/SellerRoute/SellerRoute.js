@@ -11,6 +11,7 @@ const SellerRoute = ({ children }) => {
     if (loading || sellerLoading) {
         return <Loading></Loading>
     }
+
     if (user && isSeller) {
         return children;
 
