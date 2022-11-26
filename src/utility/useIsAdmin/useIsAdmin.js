@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+
 export const useIsAdmin = email => {
     const [adminLoading, setAdminLoading] = useState(true)
     const [isAdmin, setIsAdmin] = useState(false);

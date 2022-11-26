@@ -16,7 +16,7 @@ const Login = () => {
     const [customLoading, setCustomLoading] = useState(false);
     // previous location
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/dashboard";
     const navigate = useNavigate()
     // login form event handler
     const handleLogin = (e) => {

@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { FaCheckCircle } from "react-icons/fa";
+import { AuthContext } from '../../context/AuthContextProvider';
+const ProductCard = ({ product, setBookingData }) => {
+    // auth state 
+    const { user } = useContext(AuthContext);
+    // destructuring product data
+    const { productName, category, pictureURL, description, resalePrice, originalPrice, usedDuration, yearOfPurchase, productCondition, postedTime, sellerPhoneNumber, location, sellerName, sellerEmail, _id } = product;
+    //seller verification status
+    const [sellerVerificationStatus, setSellerVerificationStatus] = useState(false)
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/verificationstatus/${sellerEmail}`)
+            .then(response => response.json())
+            .then(data => setSellerVerificationStatus(data.status));
+    }, [sellerEmail]);
 
-const ProductCard = ({ product }) => {
-    const { productName, category, pictureURL, description, resalePrice, originalPrice, usedDuration, yearOfPurchase, productCondition, postedTime, sellerPhoneNumber, location, sellerName } = product
+    const currentBookingData = {
+        customerName: user?.displayName,
+        customerEmail: user?.email,
+        bookedProductName: productName,
+        bookedProductId: _id,
+        sellerEmailAddress: sellerEmail,
+        productPrice: resalePrice,
+    }
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure><img src={pictureURL} alt={productName} className="lg:w-[300px]" /></figure>
@@ -23,12 +43,16 @@ const ProductCard = ({ product }) => {
                 </div>
                 <div>
                     <h3 className='font-semibold'>Seller Information </h3>
-                    <p>Seller Name: {sellerName}</p>
+                    <p className='flex items-center'><span className='mr-2'>Seller Name: {sellerName}</span>
+                        {
+                            sellerVerificationStatus && <FaCheckCircle className='text-primary' />
+                        }
+                    </p>
                     <p>Phone: {sellerPhoneNumber}</p>
                     <p>Location: {location} </p>
                 </div>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary font-bold text-white ">Book Now</button>
+                    <label onClick={() => setBookingData(currentBookingData)} htmlFor="booking-modal" className="btn btn-primary font-bold text-white">Book Now</label>
                 </div>
             </div>
         </div>

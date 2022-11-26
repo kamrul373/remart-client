@@ -14,9 +14,9 @@ const Navbar = () => {
         <>
             <li className='lg:mr-3'><Link to="/">Home</Link></li>
             <li className='lg:mr-3'><Link to="/blogs">Blogs</Link></li>
-            <li className='lg:mr-3'><Link to="/dashboard/add-product">Add Product</Link></li>
-            <li className='lg:mr-3'><Link to="/dashboard/myproducts">My products</Link></li>
-
+            {
+                user?.uid && <li className='lg:mr-3'><Link to="/dashboard/">Dashboard</Link></li>
+            }
             {
                 user?.uid ? <button onClick={handleLogout} className="btn btn-secondary text-black btn-sm mt-2">Log out</button>
                     : <Link to="/login" className="btn btn-secondary text-black btn-sm mt-2">Log in</Link>

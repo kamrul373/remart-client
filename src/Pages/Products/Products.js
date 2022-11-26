@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
+import BookingModal from '../../Components/BookingModal/BookingModal';
 import Loading from "../../Components/Loading/Loading"
 import ProductCard from './ProductCard';
 
 const Products = () => {
+    // booking data state
+    const [bookingData, setBookingData] = useState(null);
+    // products laoder
     const products = useLoaderData()
+    // navigation 
     const navigation = useNavigation();
 
     if (navigation.state === "loading") {
@@ -18,9 +23,16 @@ const Products = () => {
                     products.map(product => <ProductCard
                         key={product._id}
                         product={product}
+                        setBookingData={setBookingData}
                     ></ProductCard>)
                 }
             </div>
+            {
+                bookingData && <BookingModal
+                    bookingData={bookingData}
+                    setBookingData={setBookingData}
+                ></BookingModal>
+            }
         </div>
     );
 };

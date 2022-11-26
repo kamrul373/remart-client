@@ -2,10 +2,14 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Footer from '../Components/Shared/Footer/Footer';
 import Navbar from '../Components/Shared/Navbar/Navbar';
-import { FaBars } from "react-icons/fa";
+
 import { AuthContext } from '../context/AuthContextProvider';
+import { useIsAdmin } from '../utility/useIsAdmin/useIsAdmin';
+import { useIsSeller } from '../utility/useIsSeller/useIsSeller';
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
+    const [sellerLoading, isSeller] = useIsSeller(user?.email);
+    const [adminLoading, isAdmin] = useIsAdmin(user?.email);
     return (
         <div>
             <Navbar></Navbar>
@@ -30,11 +34,19 @@ const DashboardLayout = () => {
                             <h2 className='font-bold text-2xl my-3'>{user?.displayName}</h2>
                         </div>
                         {/* <!-- Sidebar content here --> */}
-                        <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/add-product">Add Product</Link></li>
-                        <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/myproducts">My Products</Link></li>
+                        {
+                            !isSeller && !isAdmin && <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/orders">My Orders</Link></li>
+                        }
+                        {
+                            isSeller && <>
+
+                                <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/add-product">Add Product</Link></li>
+                                <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/myproducts">My Products</Link></li>
+
+                            </>
+                        }
 
                     </ul>
-
                 </div>
             </div>
             <Footer></Footer>

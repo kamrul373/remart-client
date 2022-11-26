@@ -6,6 +6,7 @@ import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyProducts from "../../Pages/MyProducts/MyProducts";
+import Orders from "../../Pages/Orders/Orders";
 import Products from "../../Pages/Products/Products";
 import Regsiter from "../../Pages/Regsiter/Regsiter";
 import AdminRoute from "../AdminRoute/AdminRoute";
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/myproducts",
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: "/dashboard/orders",
+                element: <Orders></Orders>
             }
         ]
     }
