@@ -6,6 +6,7 @@ import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyProducts from "../../Pages/MyProducts/MyProducts";
+import Products from "../../Pages/Products/Products";
 import Regsiter from "../../Pages/Regsiter/Regsiter";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -29,6 +30,11 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Regsiter></Regsiter>
+            },
+            {
+                path: "/products/:cattegoryId",
+                loader: async ({ params }) => fetch(`${process.env.REACT_APP_SERVER_URL}/products/${params.cattegoryId}`),
+                element: <PrivateRoute><Products></Products></PrivateRoute>
             }
         ]
     },

@@ -4,13 +4,19 @@ import { toast } from 'react-hot-toast';
 
 import Loading from '../../Components/Loading/Loading';
 import { AuthContext } from '../../context/AuthContextProvider';
+import { pageTitle } from '../../utility/pageTitle';
 import MyProduct from './MyProduct';
+
 const MyProducts = () => {
+    // page title
+    pageTitle("My Products");
+    // auth context
     const { user } = useContext(AuthContext)
+    // seller products fetching
     const { data: products = [], refetch, isLoading } = useQuery({
-        queryKey: ["productskey"],
+        queryKey: ["productskey", user],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/products/${user?.email}`, {
+            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/myproducts/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("remart-token")}`
                 }
@@ -61,7 +67,7 @@ const MyProducts = () => {
     }
     return (
         <div className='px-3'>
-            <h2 className='text-3xl font-bold my-3'>My Products</h2>
+            <h2 className='text-3xl font-bold my-3'>My Products {products.length} </h2>
             <div className="overflow-x-auto">
                 <table className="lg:table w-full table-normal ">
                     <thead className=''>

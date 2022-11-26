@@ -2,12 +2,18 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../../Components/Loading/Loading';
 import { AuthContext } from '../../context/AuthContextProvider';
+import { pageTitle } from '../../utility/pageTitle';
 import "./AddProduct.css";
 const AddProduct = () => {
+    // page title 
+    pageTitle("Add Product");
     // auth context 
     const { user } = useContext(AuthContext);
+    // navigation
+    const navigate = useNavigate()
     // react query : loading cateories
     const { data: categories = [], isLoading } = useQuery({
         queryKey: ["category"],
@@ -80,6 +86,7 @@ const AddProduct = () => {
                     .then(data => {
                         console.log(data)
                         toast.success("Product Published Successfully");
+                        navigate("/dashboard/myproducts")
                     }).catch(error => console.log(error))
 
             }
@@ -161,9 +168,9 @@ const AddProduct = () => {
                         <span className="label-text">Product Condition</span>
                     </label>
                     <select name='productCondition' className="select select-primary w-full " required>
-                        <option value="excellent">Excellent</option>
-                        <option value="good">Good</option>
-                        <option value="fair">Fair</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
                     </select>
                 </div>
                 <div className="form-control">

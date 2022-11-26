@@ -5,7 +5,7 @@ const MyProduct = ({ product, serial, handleProductDelete, handleadvertise }) =>
     return (
         <tr>
             <th>{serial + 1}</th>
-            <td className='font-semibold'>{productName.slice(0, 20)}</td>
+            <td className='font-semibold'>{productName.length > 20 ? `${productName.slice(0, 20)}... ` : productName}</td>
             <td>{category}</td>
             <td>{resalePrice}</td>
             <td>{status}</td>
