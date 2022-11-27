@@ -45,6 +45,9 @@ const DashboardLayout = () => {
 
                             </>
                         }
+                        {
+                            isAdmin && <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/reports">Reports</Link></li>
+                        }
 
                     </ul>
                 </div>

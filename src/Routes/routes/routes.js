@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
@@ -10,6 +11,7 @@ import Orders from "../../Pages/Orders/Orders";
 import Payment from "../../Pages/Payment/Payment";
 import Products from "../../Pages/Products/Products";
 import Regsiter from "../../Pages/Regsiter/Regsiter";
+import Reports from "../../Pages/Reports/Reports";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
@@ -61,7 +63,11 @@ export const router = createBrowserRouter([
                 path: "/dashboard/payment/:id",
                 loader: async ({ params }) => fetch(`${process.env.REACT_APP_SERVER_URL}/orders/${params.id}`),
                 element: <Payment></Payment>
-            }
+            },
+            {
+                path: "/dashboard/reports",
+                element: <Reports></Reports>
+            },
         ]
     }
 ]);

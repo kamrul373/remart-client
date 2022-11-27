@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
 import { AuthContext } from '../../context/AuthContextProvider';
 import useSellerStatus from '../../utility/useSellerStatus';
-const ProductCard = ({ product, setBookingData }) => {
+import { GoReport } from "react-icons/go";
+const ProductCard = ({ product, setBookingData, setReportData }) => {
     // auth state 
     const { user } = useContext(AuthContext);
     // destructuring product data
@@ -20,6 +21,13 @@ const ProductCard = ({ product, setBookingData }) => {
         productPrice: resalePrice,
         pictureURL
     }
+    const reportProductInfo = {
+        productId: _id,
+        productName,
+        email: user?.email,
+        name: user?.displayName
+    }
+
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure><img src={pictureURL} alt={productName} className="lg:w-[300px]" /></figure>
@@ -48,6 +56,12 @@ const ProductCard = ({ product, setBookingData }) => {
                     </p>
                     <p>Phone: {sellerPhoneNumber}</p>
                     <p>Location: {location} </p>
+                </div>
+                <div className='text-red-500 lg:absolute bottom-10'>
+                    <label htmlFor="report-modal" className='flex items-center cursor-pointer' onClick={() => setReportData(reportProductInfo)}>
+                        <GoReport className='mr-2'></GoReport>
+                        <span>Report to Admin</span>
+                    </label>
                 </div>
                 <div className="card-actions justify-end">
                     <label onClick={() => setBookingData(currentBookingData)} htmlFor="booking-modal" className="btn btn-primary font-bold text-white">Book Now</label>

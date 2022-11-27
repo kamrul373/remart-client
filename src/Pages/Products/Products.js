@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import BookingModal from '../../Components/BookingModal/BookingModal';
 import Loading from "../../Components/Loading/Loading"
+import ReportModal from '../../Components/ReportModal/ReportModal';
 import ProductCard from './ProductCard';
 
 const Products = () => {
     // booking data state
     const [bookingData, setBookingData] = useState(null);
+    const [reportData, setReportData] = useState(null);
     // products laoder
     const products = useLoaderData()
     // navigation 
@@ -24,6 +26,7 @@ const Products = () => {
                         key={product._id}
                         product={product}
                         setBookingData={setBookingData}
+                        setReportData={setReportData}
                     ></ProductCard>)
                 }
             </div>
@@ -32,6 +35,12 @@ const Products = () => {
                     bookingData={bookingData}
                     setBookingData={setBookingData}
                 ></BookingModal>
+            }
+            {
+                reportData && <ReportModal
+                    reportData={reportData}
+                    setReportData={setReportData}
+                ></ReportModal>
             }
         </div>
     );
