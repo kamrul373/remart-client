@@ -38,11 +38,26 @@ const AllSellers = () => {
                 })
         }
     }
+    const handleVerify = id => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/users/${id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application-json",
+                authorization: `Bearer ${localStorage.getItem("remart-token")}`
+            }
+        }).then(response => response.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success("User verified");
+                    refetch();
+                }
+            })
+    }
     return (
         <div className='md:px-10 px-4'>
             <h2 className='text-3xl font-bold my-3'>All Sellers</h2>
             <div className="overflow-x-auto">
-                <table className="lg:table table-zebra table-auto w-full overflow-x-hidden ">
+                <table className="lg:table table-zebra table-compact w-full overflow-x-hidden">
 
                     <thead>
                         <tr>
@@ -50,6 +65,7 @@ const AllSellers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Status</th>
+
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -61,6 +77,7 @@ const AllSellers = () => {
                                 seller={seller}
                                 i={i}
                                 handleUserDelete={handleUserDelete}
+                                handleVerify={handleVerify}
                             ></Seller>)
                         }
 

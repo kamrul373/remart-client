@@ -1,23 +1,29 @@
 import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaTrashAlt } from 'react-icons/fa';
 
-const Seller = ({ seller, i, handleUserDelete }) => {
-    const { email, name } = seller
+const Seller = ({ seller, i, handleUserDelete, handleVerify }) => {
+    const { email, name, _id, verified } = seller
     return (
         <tr>
             <th>{i + 1}</th>
-            <td>
+            <td className='lg:text-xl'>
                 {name}
             </td>
-            <td>
+            <td className='lg:text-xl'>
                 {email}
             </td>
             <td>
-                <button className='btn btn-primary font-bold text-white btn-xs capitalize'>Verify</button>
+                {
+                    verified ? <
+                        FaCheckCircle className='text-primary ' title="Verified" /> :
+                        <button
+                            onClick={() => handleVerify(_id)}
+                            className='btn btn-primary lg:font-bold text-white btn-xs capitalize'>Verify</button>
+                }
             </td>
             <td>
                 <FaTrashAlt
-                    onClick={() => handleUserDelete(seller._id)}
+                    onClick={() => handleUserDelete(_id)}
                     className='text-xl text-error cursor-pointer'></FaTrashAlt>
             </td>
         </tr>

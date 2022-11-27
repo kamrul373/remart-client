@@ -5,12 +5,12 @@ const Report = ({ report, i, handleProductDelete }) => {
     return (
         <tr>
             <th>{i + 1}</th>
-            <td>
+            <td className='lg:text-lg'>
                 <span className='font-bold'>{productName.slice(0, 20)}</span>
                 <br />
                 <span className='text-xs'>pid : {productId} </span>
             </td>
-            <td>{reportMessage && reportMessage}</td>
+            <td className='lg:text-lg'>{reportMessage && reportMessage}</td>
             <td>
                 <FaTrashAlt
                     onClick={() => handleProductDelete(productId, _id)}

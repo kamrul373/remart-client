@@ -6,10 +6,10 @@ const Buyer = ({ buyer, i, handleUserDelete }) => {
     return (
         <tr>
             <th>{i + 1}</th>
-            <td>
+            <td className='lg:text-xl'>
                 {name}
             </td>
-            <td>
+            <td className='lg:text-xl'>
                 {email}
             </td>
             <td>

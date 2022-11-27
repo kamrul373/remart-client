@@ -42,7 +42,7 @@ const AllBuyers = () => {
         <div className='md:px-10 px-4'>
             <h2 className='text-3xl font-bold my-3'>All Buyers</h2>
             <div className="overflow-x-auto">
-                <table className="lg:table table-zebra table-auto w-full overflow-x-hidden ">
+                <table className="lg:table table-zebra table-compact w-full overflow-x-hidden ">
 
                     <thead>
                         <tr>

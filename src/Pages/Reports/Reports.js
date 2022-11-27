@@ -58,7 +58,7 @@ const Reports = () => {
         <div className='lg:px-10 px-4'>
             <h2 className='text-3xl my-4 font-bold'>Reported Items</h2>
             <div className="overflow-x-auto">
-                <table className="lg:table table-zebra table-auto w-full overflow-x-hidden ">
+                <table className="lg:table table-zebra table-compact w-full overflow-x-hidden ">
 
                     <thead>
                         <tr>
