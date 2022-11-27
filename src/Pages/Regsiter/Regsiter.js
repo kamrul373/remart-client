@@ -68,6 +68,8 @@ const Regsiter = () => {
                                     // token saving on localstorage
                                     localStorage.setItem("remart-token", data.token);
                                     navigate("/");
+                                    // realoding as recommended to solve private route visiting on auto login issue for new account registration
+                                    window.location.reload();
                                     form.reset();
                                 })
                         }

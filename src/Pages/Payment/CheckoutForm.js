@@ -15,6 +15,7 @@ const CheckoutForm = ({ orderData }) => {
     const [processing, setProcessing] = useState(false);
 
     const [clientSecret, setClientSecret] = useState("");
+    const [transactionId, setTransactionId] = useState("");
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -80,6 +81,7 @@ const CheckoutForm = ({ orderData }) => {
                 .then(response => response.json)
                 .then(data => {
                     toast.success("You paid successfully!")
+                    setTransactionId(paymentIntent.id)
                     console.log(data);
                 })
         }
@@ -94,7 +96,7 @@ const CheckoutForm = ({ orderData }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="md:w-[400px] mt-8">
+        <form onSubmit={handleSubmit} className="md:w-[450px] mt-8">
             <CardElement
                 options={{
                     style: {
@@ -115,6 +117,13 @@ const CheckoutForm = ({ orderData }) => {
                 Pay Now
             </button>
             <p className='text-red-700 mt-4'>{error && error}</p>
+            <div className='text-green-700 mt-4 font-bold'>
+                {transactionId &&
+                    <>  <p>Your payment was successful</p>
+                        <p>Your Transaction Id : {transactionId} </p>
+                    </>
+                }
+            </div>
         </form>
     );
 };

@@ -1,19 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
 import { AuthContext } from '../../context/AuthContextProvider';
+import useSellerStatus from '../../utility/useSellerStatus';
 const ProductCard = ({ product, setBookingData }) => {
     // auth state 
     const { user } = useContext(AuthContext);
     // destructuring product data
     const { productName, category, pictureURL, description, resalePrice, originalPrice, usedDuration, yearOfPurchase, productCondition, postedTime, sellerPhoneNumber, location, sellerName, sellerEmail, _id } = product;
     //seller verification status
-    const [sellerVerificationStatus, setSellerVerificationStatus] = useState(false)
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/verificationstatus/${sellerEmail}`)
-            .then(response => response.json())
-            .then(data => setSellerVerificationStatus(data.status));
-    }, [sellerEmail]);
-
+    // checking seller status
+    const sellerVerificationStatus = useSellerStatus(sellerEmail);
+    // current booking
     const currentBookingData = {
         customerName: user?.displayName,
         customerEmail: user?.email,
@@ -46,7 +43,7 @@ const ProductCard = ({ product, setBookingData }) => {
                     <h3 className='font-semibold'>Seller Information </h3>
                     <p className='flex items-center'><span className='mr-2'>Seller Name: {sellerName}</span>
                         {
-                            sellerVerificationStatus && <FaCheckCircle className='text-primary' />
+                            sellerVerificationStatus && <FaCheckCircle className='text-primary' title="Verified" />
                         }
                     </p>
                     <p>Phone: {sellerPhoneNumber}</p>

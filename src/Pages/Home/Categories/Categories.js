@@ -8,10 +8,10 @@ const Categories = () => {
             .then(response => response.json())
             .then(data => setCategories(data))
     }, [])
-    console.log(categories)
+    //console.log(categories)
     return (
         <div>
-            <h2 className='lg:text-4xl font-bold text-center my-8'>Popular Categories</h2>
+            <h2 className='lg:text-4xl font-bold text-center lg:my-16 my-8'>Popular Categories</h2>
             <div className='grid lg:grid-cols-3 grid-cols-2 justify-items-center gap-6 my-8 px-10'>
                 {
                     categories.map(category => <Category

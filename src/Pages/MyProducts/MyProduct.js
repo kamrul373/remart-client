@@ -8,14 +8,14 @@ const MyProduct = ({ product, serial, handleProductDelete, handleadvertise }) =>
             <td className='font-semibold'>{productName.length > 20 ? `${productName.slice(0, 20)}... ` : productName}</td>
             <td>{category}</td>
             <td>{resalePrice}</td>
-            <td>{status}</td>
+            <td>{status === "unsold" ? <span className='text-green-500 font-bold'>Available</span> : <span className='text-green-700 font-bold'>Sold</span>}</td>
             <td>
                 {
-                    status === "unsold" && !advertise ?
-                        <button
-                            onClick={() => handleadvertise(_id)}
-                            className='btn-sm btn-primary font-bold'>Advertise</button>
-                        : <span className='text-green-700 font-bold'>Advertised</span>
+                    status === "unsold" &&
+                    <button
+                        onClick={() => handleadvertise(_id)}
+                        className='btn-sm btn-primary font-bold'>Advertise</button>
+
                 }
             </td>
 
