@@ -1,9 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContextProvider';
+import { pageTitle } from '../../utility/pageTitle';
 import OrderCard from './OrderCard';
 
 const Orders = () => {
+    // page title 
+    pageTitle("My Orders")
     const { user } = useContext(AuthContext)
     const { data: orders = [] } = useQuery({
         queryKey: ["mywords", user?.email],

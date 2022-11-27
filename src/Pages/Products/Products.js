@@ -3,6 +3,7 @@ import { useLoaderData, useNavigation } from 'react-router-dom';
 import BookingModal from '../../Components/BookingModal/BookingModal';
 import Loading from "../../Components/Loading/Loading"
 import ReportModal from '../../Components/ReportModal/ReportModal';
+import { pageTitle } from '../../utility/pageTitle';
 import ProductCard from './ProductCard';
 
 const Products = () => {
@@ -11,6 +12,9 @@ const Products = () => {
     const [reportData, setReportData] = useState(null);
     // products laoder
     const products = useLoaderData()
+
+    // page title 
+    pageTitle(products[0].category)
     // navigation 
     const navigation = useNavigation();
 

@@ -2,10 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
+import Loading from '../../Components/Loading/Loading';
+import { pageTitle } from '../../utility/pageTitle';
 import Report from './Report';
 
 const Reports = () => {
-    const { data: reports = [], refetch } = useQuery({
+    // page title 
+    pageTitle("Reports");
+    const { data: reports = [], refetch, isLoading } = useQuery({
         queryKey: ["reportedItems"],
         queryFn: async () => {
             const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/report`, {
@@ -17,9 +21,12 @@ const Reports = () => {
             return data;
         }
     })
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     // product delete handler
     const handleProductDelete = (productid, reportid) => {
-        const confirm = window.confirm(`Are you sure you want to delete product id : ${productid} report id : ${reportid}`);
+        const confirm = window.confirm(`Are you sure you want to delete product id : ${productid}`);
         if (confirm) {
             fetch(`${process.env.REACT_APP_SERVER_URL}/products/${productid}`, {
                 method: "DELETE",
