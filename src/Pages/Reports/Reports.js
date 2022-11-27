@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import Report from './Report';
 
@@ -17,10 +18,10 @@ const Reports = () => {
         }
     })
     // product delete handler
-    const handleProductDelete = id => {
-        const confirm = window.confirm(`Are you sure you want to delete product id : ${id}`);
+    const handleProductDelete = (productid, reportid) => {
+        const confirm = window.confirm(`Are you sure you want to delete product id : ${productid} report id : ${reportid}`);
         if (confirm) {
-            fetch(`${process.env.REACT_APP_SERVER_URL}/products/${id}`, {
+            fetch(`${process.env.REACT_APP_SERVER_URL}/products/${productid}`, {
                 method: "DELETE",
                 headers: {
                     "content-type": "application-json",
@@ -29,7 +30,17 @@ const Reports = () => {
             }).then(response => response.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        refetch();
+                        fetch(`${process.env.REACT_APP_SERVER_URL}/report/${reportid}`, {
+                            method: "DELETE"
+                        }).then(response => response.json())
+                            .then(data => {
+                                if (data.deletedCount > 0) {
+                                    toast.success("Product deleted successfully");
+                                    refetch();
+                                }
+                            })
+
+
                     }
 
                 })

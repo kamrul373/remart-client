@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTrashAlt } from "react-icons/fa";
 const Report = ({ report, i, handleProductDelete }) => {
-    const { productName, report: reportMessage, productId } = report;
+    const { productName, report: reportMessage, productId, _id } = report;
     return (
         <tr>
             <th>{i + 1}</th>
@@ -13,7 +13,7 @@ const Report = ({ report, i, handleProductDelete }) => {
             <td>{reportMessage && reportMessage}</td>
             <td>
                 <FaTrashAlt
-                    onClick={() => handleProductDelete(productId)}
+                    onClick={() => handleProductDelete(productId, _id)}
                     className='text-xl text-error cursor-pointer'></FaTrashAlt>
             </td>
         </tr>
