@@ -4,7 +4,9 @@ import {
     useStripe,
     useElements,
 } from '@stripe/react-stripe-js';
+import { toast } from 'react-hot-toast';
 const CheckoutForm = ({ orderData }) => {
+    console.log(orderData)
     // order data
     const { productPrice, customerEmail, customerName } = orderData;
     const stripe = useStripe();
@@ -59,6 +61,28 @@ const CheckoutForm = ({ orderData }) => {
                 },
             },
         );
+        if (paymentIntent.status === "succeeded") {
+            const paymentData = {
+                transanction_id: paymentIntent.id,
+                productId: orderData.bookedProductId,
+                bookingId: orderData._id,
+                price: orderData.productPrice
+            }
+            console.log(paymentData);
+            fetch(`${process.env.REACT_APP_SERVER_URL}/payments`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem("remart-token")}`
+                },
+                body: JSON.stringify(paymentData)
+            })
+                .then(response => response.json)
+                .then(data => {
+                    toast.success("You paid successfully!")
+                    console.log(data);
+                })
+        }
         if (confirmError) {
             return setError(confirmError.message)
         } else {
