@@ -12,7 +12,7 @@ const sliders = [
         prev: 4,
         next: 2,
         position: "left",
-        title: "Best Laptops Deals",
+        title: "Save Some Cash!",
         subTitle: "Our site is made to allow you to save some cash!",
     },
     {

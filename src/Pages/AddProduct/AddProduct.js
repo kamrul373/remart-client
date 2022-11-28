@@ -139,9 +139,9 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control">
                     <label className="label" htmlFor='resalePrice'>
-                        <span className="label-text">Reslae Price</span>
+                        <span className="label-text"><span className='text-lg font-semibold'>Resale Price in Taka</span> <span className='font-bold'> ( Please dont put below 100 taka as stripe has minimum $ transction limit)</span> </span>
                     </label>
-                    <input name='resalePrice' type="text" placeholder="Resale Price" className="input input-bordered input-primary w-full " id="resalePrice" required />
+                    <input name='resalePrice' type="text" placeholder="Resale Price in Taka" className="input input-bordered input-primary w-full " id="resalePrice" required />
                 </div>
                 <div className="form-control">
                     <label className="label" htmlFor='originalPrice'>

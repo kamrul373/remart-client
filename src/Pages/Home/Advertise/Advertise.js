@@ -32,6 +32,7 @@ const Advertise = () => {
             </div>
             {bookingData && <BookingModal
                 bookingData={bookingData}
+                setBookingData={setBookingData}
             ></BookingModal>}
         </div>
     );

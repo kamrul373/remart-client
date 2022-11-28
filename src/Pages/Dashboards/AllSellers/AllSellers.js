@@ -23,7 +23,7 @@ const AllSellers = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    console.log(sellers);
+    //console.log(sellers);
     const handleUserDelete = id => {
         const confirm = window.confirm(`Are you sure you want to delete ssller id : ${id}`);
         if (confirm) {
