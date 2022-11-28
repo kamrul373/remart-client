@@ -11,7 +11,11 @@ const AllBuyers = () => {
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ["allbuyers"],
         queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/users?role=buyer`)
+            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/users?role=buyer`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem("remart-token")}`
+                }
+            })
             const data = await res.json()
             return data
         }

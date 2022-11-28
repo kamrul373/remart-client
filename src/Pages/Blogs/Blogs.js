@@ -5,7 +5,7 @@ const Blogs = () => {
     // page title 
     pageTitle("Blogs");
     return (
-        <div className='lg:px-10 px-4 blogs mx-auto lg:w-[70%] w-[90%]'>
+        <div className='lg:px-10 px-4 blogs mx-auto lg:w-[70%] w-[90%] pb-10'>
             <h2 className='text-4xl font-bold my-8 text-center'>Blogs</h2>
             <div className='blog my-5 '>
                 <h2 className='title lg:text-3xl text-2xl text-center my-3 font-bold'> What are the different ways to manage a state in a React application?</h2>

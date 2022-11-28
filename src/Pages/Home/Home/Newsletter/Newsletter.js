@@ -6,7 +6,7 @@ const Newsletter = () => {
             <section className="bg-primary text-white">
                 <div className="container px-4 py-16 mx-auto lg:flex lg:items-center lg:justify-between">
                     <h2 className="text-3xl font-semibold tracking-tight text-white xl:text-4xl dark:text-white">
-                        Join us and get the update from anywhere
+                        Join us and get exclusive deals!
                     </h2>
 
                     <div className="mt-8 lg:mt-0">

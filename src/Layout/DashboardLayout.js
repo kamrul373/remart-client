@@ -34,6 +34,7 @@ const DashboardLayout = () => {
                             <h2 className='font-bold text-2xl my-3'>{user?.displayName}</h2>
                         </div>
                         {/* <!-- Sidebar content here --> */}
+                        <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard">Dashbaord</Link></li>
                         {
                             !isSeller && !isAdmin && <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/orders">My Orders</Link></li>
                         }
@@ -48,11 +49,10 @@ const DashboardLayout = () => {
                         {
                             isAdmin &&
                             <>
-                                <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/reports">Reports</Link></li>
-
                                 <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/sellers">Sellers</Link></li>
 
                                 <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/buyers">Buyers</Link></li>
+                                <li className='hover:bg-primary duration-500 border-b-[1px] border-zinc-400 mb-2'><Link to="/dashboard/reports">Reports</Link></li>
                             </>
 
                         }

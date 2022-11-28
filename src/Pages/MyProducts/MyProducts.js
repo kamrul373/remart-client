@@ -70,7 +70,7 @@ const MyProducts = () => {
         <div className='px-3'>
             <h2 className='text-3xl font-bold my-3'>My Products {products.length} </h2>
             <div className="overflow-x-auto">
-                <table className="lg:table w-full table-normal ">
+                <table className="table table-normal w-full ">
                     <thead className=''>
                         <tr>
                             <th></th>

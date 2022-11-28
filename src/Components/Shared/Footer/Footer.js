@@ -7,7 +7,7 @@ const Footer = () => {
             <footer className="footer p-10">
                 <div>
                     <h2 className='text-4xl font-bold'>ReMart</h2>
-                    <p>ReMart Industries Ltd.<br />Providing reliable tech since 1992</p>
+                    <p>ReMart Industries Ltd.<br />Providing reliable used laptop</p>
                 </div>
                 <div>
                     <span className="footer-title">Services</span>
