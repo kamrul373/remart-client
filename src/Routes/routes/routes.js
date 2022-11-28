@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import AddProduct from "../../Pages/AddProduct/AddProduct";
+import Blogs from "../../Pages/Blogs/Blogs";
 import AllBuyers from "../../Pages/Dashboards/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboards/AllSellers/AllSellers";
 import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
                 path: "/products/:cattegoryId",
                 loader: async ({ params }) => fetch(`${process.env.REACT_APP_SERVER_URL}/products/${params.cattegoryId}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
+            },
+            {
+                path: "/blogs",
+                element: <Blogs></Blogs>
             }
         ]
     },
