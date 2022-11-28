@@ -2,20 +2,25 @@ import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
-import AddProduct from "../../Pages/AddProduct/AddProduct";
+
 import Blogs from "../../Pages/Blogs/Blogs";
+import AddProduct from "../../Pages/Dashboards/AddProduct/AddProduct";
 import AllBuyers from "../../Pages/Dashboards/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboards/AllSellers/AllSellers";
 import Dashboard from "../../Pages/Dashboards/Dashboard/Dashboard";
+import MyProducts from "../../Pages/Dashboards/MyProducts/MyProducts";
+import Orders from "../../Pages/Dashboards/Orders/Orders";
+import Payment from "../../Pages/Dashboards/Payment/Payment";
+import Reports from "../../Pages/Dashboards/Reports/Reports";
 import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
-import MyProducts from "../../Pages/MyProducts/MyProducts";
-import Orders from "../../Pages/Orders/Orders";
-import Payment from "../../Pages/Payment/Payment";
+
+
+
 import Products from "../../Pages/Products/Products";
 import Regsiter from "../../Pages/Regsiter/Regsiter";
-import Reports from "../../Pages/Reports/Reports";
+
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
@@ -82,11 +87,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/sellers",
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: "/dashboard/buyers",
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             }
         ]
     }

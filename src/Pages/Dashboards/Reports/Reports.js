@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast } from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
-import Loading from '../../Components/Loading/Loading';
-import { pageTitle } from '../../utility/pageTitle';
+import Loading from '../../../Components/Loading/Loading';
+import { pageTitle } from '../../../utility/pageTitle';
+
+
 import Report from './Report';
 
 const Reports = () => {

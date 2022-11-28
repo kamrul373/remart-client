@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../../Components/Loading/Loading';
-import { AuthContext } from '../../context/AuthContextProvider';
-import { pageTitle } from '../../utility/pageTitle';
+import Loading from '../../../Components/Loading/Loading';
+import { AuthContext } from '../../../context/AuthContextProvider';
+import { pageTitle } from '../../../utility/pageTitle';
+
 import "./AddProduct.css";
 const AddProduct = () => {
     // page title 

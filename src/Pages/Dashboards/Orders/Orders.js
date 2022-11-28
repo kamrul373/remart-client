@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import Loading from '../../Components/Loading/Loading';
-import { AuthContext } from '../../context/AuthContextProvider';
-import { pageTitle } from '../../utility/pageTitle';
+import Loading from '../../../Components/Loading/Loading';
+import { AuthContext } from '../../../context/AuthContextProvider';
+import { pageTitle } from '../../../utility/pageTitle';
+
 import OrderCard from './OrderCard';
 
 const Orders = () => {

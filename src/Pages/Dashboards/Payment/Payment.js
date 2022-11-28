@@ -2,7 +2,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { pageTitle } from '../../utility/pageTitle';
+import { pageTitle } from '../../../utility/pageTitle';
+
 import CheckoutForm from './CheckoutForm';
 
 const Payment = () => {

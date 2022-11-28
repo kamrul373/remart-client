@@ -2,7 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BookingModal from '../../../Components/BookingModal/BookingModal';
+import Loading from '../../../Components/Loading/Loading';
 import { AuthContext } from '../../../context/AuthContextProvider';
+
 import AdvertiseCard from './AdvertiseCard';
 
 const Advertise = () => {
@@ -18,6 +20,9 @@ const Advertise = () => {
         }
     })
     //console.log(products)
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div className='lg:px-10 md:px-4 px-6'>
             <h2 className='lg:text-4xl font-bold text-center lg:my-16 my-8'>Advertised Products</h2>

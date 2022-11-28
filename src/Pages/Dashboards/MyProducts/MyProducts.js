@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
+import Loading from '../../../Components/Loading/Loading';
+import { AuthContext } from '../../../context/AuthContextProvider';
+import { pageTitle } from '../../../utility/pageTitle';
 
-import Loading from '../../Components/Loading/Loading';
-import { AuthContext } from '../../context/AuthContextProvider';
-import { pageTitle } from '../../utility/pageTitle';
+
 import MyProduct from './MyProduct';
 
 const MyProducts = () => {
