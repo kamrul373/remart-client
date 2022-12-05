@@ -1,6 +1,5 @@
 # Project Title : ReMart
 ## Live url : https://remart-90e28.web.app/
-### Admin access : user : admin@admin.com  | password : abc@123
 
 ## Features : 
 * Authentication and authorization features available for admin , seller & buyer role using Firebase & JWT token 
