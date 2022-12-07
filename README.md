@@ -11,7 +11,7 @@
 * Buyer can report about a product to admin and admin can review it , can delete reported product 
 * Admin can manage all buyer and selelr in his dashbaord .
 
-### Technology used : React JS , Express JS , Node JS , React router , React query, Axios, Environment variables, Stripe , DaisyUI, TailwindCSS, Firebase, Reac Icons, hot toast
+### Technology used : React JS , Express JS , Node JS , React router , React query, Axios, Environment variables, Stripe , DaisyUI, TailwindCSS, Firebase, React Icons, hot toast
 
 # Getting Started with Create React App
 
