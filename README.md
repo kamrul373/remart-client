@@ -1,5 +1,6 @@
 # Project Title : ReMart
 ## Live url : https://remart-90e28.web.app/
+### Server : https://github.com/kamrul373/remart-server
 
 ## Features : 
 * Authentication and authorization features available for admin , seller & buyer role using Firebase & JWT token 
