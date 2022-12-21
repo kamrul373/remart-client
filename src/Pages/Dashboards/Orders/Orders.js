@@ -28,8 +28,14 @@ const Orders = () => {
     //console.log(orders);
     return (
         <div className='px-10'>
-            <h2 className='lg:text-4xl text-3xl my-3'>My Orders</h2>
+            <h2 className='lg:text-4xl text-3xl my-3'>My Orders ( {orders.length} )</h2>
             <div className='gird grid-cols-1 gap-4 '>
+                {
+                    orders.length === 0 &&
+                    <div className='flex justify-center items-center lg:min-h-[500px] min-h-[300px]'>
+                        <h2 className='text-2xl font-bold my-3'>You have not placed any order yet.</h2>
+                    </div>
+                }
                 {
                     orders.map(order => <OrderCard
                         key={order._id}
