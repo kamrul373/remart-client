@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import Category from './Category';
+import Loading from '../../../Components/Loading/Loading';
+import { useQuery } from '@tanstack/react-query';
 
 const Categories = () => {
-    const [categories, setCategories] = useState([]);
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/category`)
-            .then(response => response.json())
-            .then(data => setCategories(data))
-    }, [])
+    //const [categories, setCategories] = useState([]);
+    const { data: categories, isLoading } = useQuery({
+        queryKey: ['productcategories'],
+        queryFn: async () => {
+            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/category`);
+            const data = await res.json();
+            return data;
+        }
+    })
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+    // useEffect(() => {
+    //     fetch(`${process.env.REACT_APP_SERVER_URL}/category`)
+    //         .then(response => response.json())
+    //         .then(data => setCategories(data))
+
+    // }, [])
     //console.log(categories)
     return (
         <div>
