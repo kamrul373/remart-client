@@ -67,10 +67,11 @@ const Regsiter = () => {
                                     //console.log(data);
                                     // token saving on localstorage
                                     localStorage.setItem("remart-token", data.token);
-                                    navigate("/");
+                                    navigate("/dashboard");
                                     // realoding as recommended to solve private route visiting on auto login issue for new account registration
                                     window.location.reload();
                                     form.reset();
+                                    setCustomLoading(false)
                                 })
                         }
                     })
@@ -79,21 +80,22 @@ const Regsiter = () => {
                         //console.log(error)
                     });
 
-                setCustomLoading(false)
+
             }).catch(err => {
                 setCustomLoading(false)
                 setError(err.message);
                 // custom error message
-                if (error) {
-                    if (error.includes("auth/email-already-in-use")) {
+                if (err.message) {
+                    if (err.message.includes("auth/email-already-in-use")) {
                         toast.error("User already exist")
                     }
-                    if (error.includes("auth/weak-password")) {
+                    if (err.message.includes("auth/weak-password")) {
                         toast.error("Password should contain 6 charecters")
                     }
                 }
             })
         //console.log(name, email, password, image, accountType)
+
     }
 
     return (

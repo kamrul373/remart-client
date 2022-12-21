@@ -45,9 +45,7 @@ const Login = () => {
             }).catch(err => {
                 setCustomLoading(true)
                 setError(err.message)
-                console.log(error)
                 if (err.message) {
-                    console.log("inside if", error)
                     if (err.message.includes("auth/user-not-found")) {
                         toast.error("User not found !")
 
