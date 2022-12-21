@@ -1,19 +1,3 @@
-# Project Title : ReMart
-## Live url : https://remart-90e28.web.app/
-### Server : https://github.com/kamrul373/remart-server
-
-## Features : 
-* Authentication and authorization features available for admin , seller & buyer role using Firebase & JWT token 
-* Buyer & Seller role registration available 
-* Seller can add new Product and also can advrtise his product.
-* Seller verificaiton by Admin and blue tick for verified seller feature implemented 
-* Seller can manage his product and buyer can manage his order 
-* Stripe payment getway avaialbel 
-* Buyer can report about a product to admin and admin can review it , can delete reported product 
-* Admin can manage all buyer and selelr in his dashbaord .
-
-### Technology used : React JS , Express JS , Node JS , React router , React query, Axios, Environment variables, Stripe , DaisyUI, TailwindCSS, Firebase, React Icons, hot toast
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

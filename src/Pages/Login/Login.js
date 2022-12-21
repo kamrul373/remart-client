@@ -24,13 +24,11 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-
+        setCustomLoading(true)
         // login
         login(email, password)
             .then(result => {
-                setCustomLoading(true)
                 setError(null);
-
                 fetch(`${process.env.REACT_APP_SERVER_URL}/jwt/${email}`)
                     .then(response => response.json())
                     .then(data => {
@@ -47,16 +45,18 @@ const Login = () => {
             }).catch(err => {
                 setCustomLoading(true)
                 setError(err.message)
-                if (error) {
-                    if (error.includes("auth/user-not-found")) {
+                console.log(error)
+                if (err.message) {
+                    console.log("inside if", error)
+                    if (err.message.includes("auth/user-not-found")) {
                         toast.error("User not found !")
 
                     }
-                    if (error.includes("auth/wrong-password")) {
+                    if (err.message.includes("auth/wrong-password")) {
                         toast.error("Email password mismatch")
 
                     }
-                    if (error.includes("auth/too-many-requests")) {
+                    if (err.message.includes("auth/too-many-requests")) {
                         toast.error("Please try later or reset your password!")
                     }
                 }
